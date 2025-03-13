@@ -1,5 +1,5 @@
 local plugins = {
-{
+{ -- we will have to see how useful this really is. Already got a barebones docker setup going still have not developed shit tho. still need to mount files and actualy do shit. need to dig int o how this works?  
   "arnaupv/nvim-devcontainer-cli",
   opts = {
     -- By default, if no extra config is added, following nvim_dotfiles are

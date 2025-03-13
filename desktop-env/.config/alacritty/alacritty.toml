@@ -2,7 +2,7 @@
 # You might define your own background color with the desired opacity.
 [window]
 # background = "0x000000CC"  # 0xCC is 80% opacity in hexadecimal (204/255 ≈ 0.8)
-opacity = 0.40
+opacity = 0.70
 
 
 [font]

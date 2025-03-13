@@ -40,7 +40,11 @@ RUN apt update && apt -y --no-install-recommends install \
     wget \
     python3 \
     python3-pip \
-	luarocks # nvim 
+	python3-venv \
+	luarocks 
+
+# python3 venv is mason clangd 
+# luarocks is some lazy package idk 
 
 # Package manager for C++ is what everyone needs in thier life
 RUN pip install conan
