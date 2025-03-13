@@ -52,7 +52,7 @@ date_output="<span foreground=\"#90ee90\" weight=\"bold\">$date_output</span>"
 
 
 # Get calendar information using cal instead of ncal
-cal_output="$(cal)"
+cal_output="$(ncal -b -h)"
 # Get the current day number
 current_day=$(date +%-d)
 # Highlight the current day in gold and make it bold
