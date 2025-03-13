@@ -51,7 +51,8 @@ RUN apt -y --no-install-recommends install \
 	luarocks \
 	curl \
 	zsh \
-	stow 
+	stow \
+	tmux
 
 RUN apt-get -y --no-install-recommends install \
 	ripgrep \
