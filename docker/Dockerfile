@@ -76,7 +76,7 @@ RUN mkdir -p /home/$USERNAME/volume
 RUN git clone https://github.com/thomasyang18/dotfiles.git && \
     mkdir .config && \ 
 	cd dotfiles && \
-    ./install.sh && \
+    ./install.sh --dev && \
     ./stow.sh
 
 # fzf 
