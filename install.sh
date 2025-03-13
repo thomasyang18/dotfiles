@@ -1,17 +1,6 @@
 #!/bin/sh
 
-
-# Hack to get dev enviornment working. You REALLY SHOULD'VE INSTALLED ALL OF THIS!!! (okay zsh is easy to forget but )
-#
-
-#apt update -y && apt install vim git -y # lol okay  
-
-apt update -y && apt install curl tar zsh -y
-
-
 # ---- actual script ----- 
-
-apt update -y && apt install stow -y
 
 rm -rf build_dir
 mkdir build_dir

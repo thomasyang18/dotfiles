@@ -14,14 +14,14 @@
 #
 # When done, just 'exit'
 
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 SHELL ["/bin/bash", "-c"]
 MAINTAINER ChristopherPisz
 LABEL Description="Chris' Ubuntu based development environment for C++"
 
-#ARG USERNAME=developer
-#ARG USER_UID=1000
-#ARG USER_GID=$USER_UID
+ARG USERNAME=developer
+ARG USER_UID=1001
+ARG USER_GID=$USER_UID
 
 # Install all the things we'll need
 #    I am installing git on the container rather than the host, because we are using the volume rather than mounting a directory we share with the host
@@ -41,23 +41,29 @@ RUN apt update && apt -y --no-install-recommends install \
     python3 \
     python3-pip \
 	python3-venv \
-	luarocks 
+	luarocks \
+	curl \
+	zsh \ 
+	stow 
+
+# curl zsh stow here. DO NOT RUN apt commands in a .sh file I guess. because now all "~" declarations are w.r.t. the sudo user.... 
+
 
 # python3 venv is mason clangd 
 # luarocks is some lazy package idk 
 
-# Package manager for C++ is what everyone needs in thier life
-RUN pip install conan
+# don't know if we want conan yet. Also 24.04 forbits installations like this which is lowkey kind of a banger idea even if annoying. 
+# RUN pip install conan
 
 # Create a non-root user and give them sudo
-# RUN groupadd --gid $USER_GID $USERNAME && \
-#   useradd --uid $USER_UID --gid $USER_GID -m $USERNAME && \
- #   echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME && \
-  #  chmod 0440 /etc/sudoers.d/$USERNAME
+ RUN groupadd --gid $USER_GID $USERNAME && \
+   useradd --uid $USER_UID --gid $USER_GID -m $USERNAME && \
+   echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME && \
+   chmod 0440 /etc/sudoers.d/$USERNAME
 
 # Change to the user
-#USER $USERNAME
-#WORKDIR /home/$USERNAME
+USER $USERNAME
+WORKDIR /home/$USERNAME
 
 # As the user, make the directory we will map the volume to, as the user, so it has proper permissions
-#RUN mkdir -p /home/$USERNAME/volume
+RUN mkdir -p /home/$USERNAME/volume
