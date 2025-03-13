@@ -1,3 +1,8 @@
+# This is probably why people invented dev-contianers.
+# We can already see how messy this is (separting the actual needed files from my personal configs)
+# But whatever :D
+
+
 # To build the docker image:
 # docker build --no-cache -t devenvcpp/ubuntu:0.1 .
 #
@@ -39,18 +44,35 @@ RUN apt update && apt -y --no-install-recommends install \
     gdb \
     wget \
     python3 \
-    python3-pip \
+    
+RUN apt -y --no-install-reccomends install \
+	python3-pip \
 	python3-venv \
 	luarocks \
-	curl \
+	curl \ 
 	zsh \ 
-	stow 
+	stow \ 
+	nodejs 
+
+RUN apt-get -y --no-install-reccomends install \
+	ripgrep
+
+# nodejs needed for treesitter
 
 # curl zsh stow here. DO NOT RUN apt commands in a .sh file I guess. because now all "~" declarations are w.r.t. the sudo user.... 
 
 
 # python3 venv is mason clangd 
 # luarocks is some lazy package idk 
+
+# Locale set to UTF-8; apparently people need this lol? 
+RUN apt install -y locales && locale-gen en_US.UTF-8
+
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8     
+
+
 
 # don't know if we want conan yet. Also 24.04 forbits installations like this which is lowkey kind of a banger idea even if annoying. 
 # RUN pip install conan
@@ -83,3 +105,5 @@ RUN git clone https://github.com/thomasyang18/dotfiles.git && \
 WORKDIR /home/$USERNAME 
 
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
+
+
