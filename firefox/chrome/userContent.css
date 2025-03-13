@@ -51,18 +51,21 @@ table {
 
 /* the above may break stuff but seems useful regardldess */ 
 
+::-moz-selection {
+  background-color: #2d0370; /* Replace with your preferred color */
+  color: #cab9eb; /* Replace with your preferred text color */
+}
 
 
 
 
+/* highly susppcios, this is the main difference betwen me and backup. we set all divs to transparent... lmao.... */ 
+div {
+	background: #00000000 !important;
+}
 
 
-
-
-
-body, html,
-div 
-/*td, pre, textarea, code, tr, table */
+body, html 
 {
     background: transparent !important;
 }
@@ -72,21 +75,28 @@ table, tr, td {
 	background: #23213622 !important;  
 }
 
+code,pre {
+	background: #362938dd !important;
+}
+
 
 /* I literally deleted the inline css and this is sSTILL not fucking applying. Theres literally NOT A SINGLE THING APPLYING HERE BESIDES MY CSS. I VERIFIED. and the button is STILL NOT CHANGING COLORS. What the fuck? Fuck codeforces dude;*/
 input[type="submit"],
 input[type="button"],
-input[name="submit"]
+input[type="search"],
+input[type="file"], 
+select
 {
-	cursor:pointer;
-	background: #000000 !important;
+	opacity: 0.5;
+	color: #000 !important;
 } /* idk why buttons are so doomed lmao */ 
+
 
 /* Oh, and arch man page online doesnt have transparent input but cf does. Fuck you arch too. Hoyl shit, what is with these dumb fucking websites and being unable to style a button. */ 
 
 
 input {
-	background: #ffafaf22  !important;
+	background: transparent  !important;
 }
 
 * {	
@@ -100,7 +110,7 @@ a:visited {
 	color: #ffafaf !important;
 }
 
-[class^="nav"] {
+[class*="nav"], [class*="css"] {
 	background: transparent !important;
 }
 
@@ -123,7 +133,8 @@ a:visited {
     }
 						
 	#scroll-container, #cinematics-container {
-		display: none !important;
+		display: none !important; /* this is a hack, but its a good one i guess */
+		background-color: transparent !important;
 		background: transparent !important;
 	}
 	
@@ -132,7 +143,7 @@ a:visited {
 	}
 	
 	#player {
-		opacity: 0.85;
+		opacity: 0.76;
 	}
 
 }
@@ -225,7 +236,11 @@ a:visited {
 /* cp websites ew */
 
 @-moz-document domain("codeforces.com") {
-
+	[class*="Lava"] {
+	} /* it seems like this shit is again going to be an issue ffs */ 
+	img[title="Codeforces"] {
+		display: none !important;
+	}
 }
 
 @-moz-document domain("atcoder.jp") {

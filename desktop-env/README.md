@@ -131,4 +131,14 @@ unfortunately you have to manually register flashfocus with systemd, but I guess
 
 uhh... cba to fix this bug right now, fuck this bug. 
 
+---
 
+# HOW TO CONNECT TO WIFI THRU COMMAND LINE 
+
+(using nmcli)
+
+nmcli device wifi list
+nmcli device wifi connect "SSID_NAME" password "YOUR_PASSWORD"
+nmcli connection show --active
+
+don't forget modprobe, and rfkill, if any weird hardware shit is disabling wifi for some reason
