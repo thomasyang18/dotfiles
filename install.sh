@@ -14,10 +14,7 @@ fi
 for dir in $(echo $env_dirs); do
 	cd "$dir"
 	./install.sh
-<<<<<<< Updated upstream
-	stow --adopt -v -t ~ . --ignore install.sh
-	cd ..
-=======
 	stow --adopt -v -t ~ . --ignore install.sh --ignore README.md
->>>>>>> Stashed changes
+	cd ..
 done
+ 
