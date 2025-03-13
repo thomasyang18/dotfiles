@@ -280,7 +280,7 @@ default_border none
 
 # flash focus
 
-exec_always '~/.local/bin/flashfocus -t 400 --flash-lone-windows never'
+exec_always '~/.local/bin/flashfocus -t 400 --flash-lone-windows never &> /tmp/flash_log.txt'
 
 # i am new to mako i guess
 exec_always mako
