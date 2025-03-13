@@ -43,16 +43,16 @@ RUN apt update && apt -y --no-install-recommends install \
     ninja-build \
     gdb \
     wget \
-    python3 \
-    
+    python3 
+
 RUN apt -y --no-install-reccomends install \
 	python3-pip \
 	python3-venv \
 	luarocks \
-	curl \ 
-	zsh \ 
-	stow \ 
-	nodejs 
+	curl \
+	zsh \
+	stow \
+	nodejs
 
 RUN apt-get -y --no-install-reccomends install \
 	ripgrep
@@ -96,7 +96,7 @@ RUN mkdir -p /home/$USERNAME/volume
 # DOTFILES 
 
 RUN git clone https://github.com/thomasyang18/dotfiles.git && \
-    mkdir .config && \ 
+    mkdir .config && \
 	cd dotfiles && \
     ./install.sh --dev && \
     ./stow.sh
