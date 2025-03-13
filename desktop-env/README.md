@@ -40,3 +40,27 @@ You can target either x11 or wayland; my old laptop is just gonan run both idrc,
     - NEED TO ISNTALL JETBRAINS MONO NERD FONT (IT JUST WORKS IN DOCKER THANKFULLY IDK HOW THE UI MAPS UP BUT THANK FULLY IT DOES. BUT FOR THE UI CONFIG... GOTTA INSTALL JETBRAINS MONONERD FONT OR WHATEVER!!!)
 
     -Installing fonts is easy; just extract zip file, get a bunch of *.ttf files, then extract to ~/.local/share/fonts. Not gonna bother putting that in dotfiles. But it something to keep in mind (perhaps put it in install.sh...? But that would add a dependency on a potentially weird webstie... ugh whatever.)
+
+
+---
+
+Just ran into the most insane issue with my hardcoded bobbilies and not recognizing "~". Well, now I know that when a script is run in sudo, "\~" changes. 
+
+So that's something. In general though "~" should be safe...??? idk. 
+
+----
+
+Okay mako and wofi just don't run presumably because:
+
+    - mako depends on fastfetch (EWWW), we are removing it NOW!!!
+    - wofi has some weird ass file path issues.... idk tho like idk (but also you need to create ~/.local/bin/gui-apps... jesus so many implicit dependencies but this is cleaner I think? idk.)
+    
+
+---
+also need flashfocus
+
+Mako no longer depends on fastfetch. However, filetreeprinter still weird.
+
+
+
+

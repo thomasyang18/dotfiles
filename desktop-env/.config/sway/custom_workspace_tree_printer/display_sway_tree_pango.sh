@@ -1,7 +1,13 @@
 #!/bin/zsh
 # display_sway_tree_pango.sh – Generate a custom workspace tree using Pango markup.
 # This replaces ANSI escape codes with Pango markup based on your config mapping.
-config_file="~/.config/sway/custom_workspace_tree_printer/config.json"
+
+# WHAT THE FUCK IS THIS 
+
+tilde=~
+
+
+config_file="${tilde}/.config/sway/custom_workspace_tree_printer/config.json"
 if [ ! -f "$config_file" ]; then
   echo "Error: Configuration file '$config_file' not found."
   exit 1

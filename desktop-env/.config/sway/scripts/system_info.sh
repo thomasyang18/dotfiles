@@ -1,45 +1,54 @@
 #!/bin/zsh
 
-# The idea is that I will refactor and delete this eventually; I don't likoe the dependency on fastfetch.
-
-# I installed in local bin to not corrupt either. Like, I only need these four things:
-# - wifi 
-# - brightness
-# - volume 
-# - battery
-
-# and any other system info i just check with btop lol
-
-# But we will have to see. 
- 
-
-# Idempotent double functions as dismissing all 
-# Check if there are existing notifications
+# Check if there are existing notifications; dismiss if so
 if [ "$(makoctl list | jq '.data[0] | length')" -gt 0 ]; then
-    # Dismiss all notifications
     makoctl dismiss --all
     exit 0
 fi
-# system_info.sh – Display system information via a Mako notification
-# This script collects output from fastfetch, date, ncal, a custom workspace tree printer,
-# and the current workspace, then sends it as a formatted, pretty notification.
-# Bind this script to a hotkey in sway to view a "terminal" style snapshot of your system info.
-# Gather fastfetch output.
-fastfetch_output="$(
-  fastfetch --config "~/.config/fastfetch/zsh_startup.json" \
-            --logo "~/.config/fastfetch/startup.txt"
-)"
-# Process fastfetch output:
-# Highlight percentages (e.g., 45%) and temperatures (e.g., 23°C or 75°F) in gold,
-# while the rest is rendered in sky blue.
-fastfetch_output=$(echo "$fastfetch_output" | perl -pe 's/(\d+(?:\.\d+)?%)/<span foreground="#ffd700" weight="bold">$1<\/span>/g')
-fastfetch_output=$(echo "$fastfetch_output" | perl -pe 's/(\d+(?:\.\d+)?°[CF])/<span foreground="#ffd700" weight="bold">$1<\/span>/g')
-fastfetch_output="<span foreground=\"#87ceeb\">$fastfetch_output</span>"
+
+tilde=~
+
+# Get screen brightness percentage
+brightness=$(brightnessctl g)
+max_brightness=$(brightnessctl m)
+brightness=$(( 100 * brightness / max_brightness ))
+
+# Get battery percentage
+battery=$(cat /sys/class/power_supply/BAT*/capacity 2>/dev/null || echo "N/A")
+
+# Get audio volume
+volume=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | head -n 1)
+
+# Get WiFi name and signal strength using nmcli (NetworkManager)
+wifi_info=$(nmcli -t -f active,ssid,signal dev wifi | grep '^yes:')
+if [ -z "$wifi_info" ]; then
+    wifi_output="<span foreground=\"#87ceeb\">WiFi: </span><span foreground=\"#ff4500\" weight=\"bold\">Disconnected</span>"
+else
+    wifi_name=$(echo "$wifi_info" | cut -d: -f2)
+    wifi_signal=$(echo "$wifi_info" | cut -d: -f3)
+    wifi_output="<span foreground=\"#87ceeb\">WiFi: </span><span foreground=\"#ffd700\">$wifi_name ($wifi_signal%)</span>"
+fi
+
+# Set battery color (red if <20%)
+if [ "$battery" != "N/A" ] && [ "$battery" -lt 20 ]; then
+    battery_color="#ff4500"
+else
+    battery_color="#ffd700"
+fi
+
+# Format output
+message=""
+message+="<span foreground=\"#87ceeb\">Brightness: </span><span foreground=\"#ffd700\">$brightness%</span>\n"
+message+="<span foreground=\"#87ceeb\">Battery: </span><span foreground=\"$battery_color\">$battery%</span>\n"
+message+="<span foreground=\"#87ceeb\">Audio: </span><span foreground=\"#ffd700\">$volume</span>\n"
+message+="$wifi_output\n"
+
+# Okay fastfetch was replaced do other stuff now 
+
+
 # Get the current date and make it bold in light green.
 date_output="$(date)"
 date_output="<span foreground=\"#90ee90\" weight=\"bold\">$date_output</span>"
-
-
 
 
 # Get calendar information using cal instead of ncal
@@ -60,7 +69,7 @@ ncal_output="<span foreground=\"#ffffff\">$cal_output</span>"
 
 workspace_name="$(swaymsg -t get_workspaces | jq -r '.[] | select(.focused) | .name')"
 # Get the custom workspace tree output from our new Pango-enabled script.
-sway_tree_output="$("$bob_home/.config/sway/custom_workspace_tree_printer/display_sway_tree_pango.sh")"
+sway_tree_output="$("${tilde}/.config/sway/custom_workspace_tree_printer/display_sway_tree_pango.sh")"
 # Now highlight the current workspace in the tree output with a bright color (magenta)
 sway_tree_output=$(echo "$sway_tree_output" | sed -E "s/(Workspace: $workspace_name)/<span foreground=\"#d2bc44\" weight=\"bold\">[[\\1]]<\/span>/g")
 # Get the current workspace wrapped in orange.
@@ -71,8 +80,6 @@ hr="<span foreground=\"#cccccc\">───────────────�
 # Build the full message using Pango markup.
 
 
-message=""
-message+="$fastfetch_output\n"
 message+="$hr\n"
 
 message+="$date_output\n"
@@ -85,8 +92,4 @@ message+="$sway_tree_output\n"
 
 
 
-#message+="$hr\n"
-
-#message+="$workspace_output"
-# Send the message as a notification (timeout is 10000ms = 10 seconds).
-notify-send -t 600000 "System Information" "$message"
+notify-send -t 60000 "System Stats" "$message"

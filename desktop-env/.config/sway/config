@@ -276,7 +276,7 @@ default_border none
 # seat seat0 hide_cursor 1500
 
 # jesus christ config is so hard
-seat seat0 xcursor_theme Junko 64
+# seat seat0 xcursor_theme Junko 64
 
 # flash focus
 
@@ -285,4 +285,4 @@ exec_always 'flashfocus -t 400 --flash-lone-windows never'
 # i am new to mako i guess
 exec_always mako
 
-bindsym $mod+Backspace exec --no-startup-id $~/.config/sway/scripts/system_info.sh
+bindsym $mod+Backspace exec --no-startup-id ~/.config/sway/scripts/system_info.sh
