@@ -45,17 +45,17 @@ RUN apt update && apt -y --no-install-recommends install \
     wget \
     python3 
 
-RUN apt -y --no-install-reccomends install \
+RUN apt -y --no-install-recommends install \
 	python3-pip \
 	python3-venv \
 	luarocks \
 	curl \
 	zsh \
-	stow \
-	nodejs
+	stow 
 
-RUN apt-get -y --no-install-reccomends install \
-	ripgrep
+RUN apt-get -y --no-install-recommends install \
+	ripgrep \
+	nodejs
 
 # nodejs needed for treesitter
 
