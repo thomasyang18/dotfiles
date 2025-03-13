@@ -6,7 +6,8 @@ set -e
 # You should be using this in a dev contianer anyways ,which is fine installing gigabytes of infra y'know? 
 
 # Tmux plugins  !!! IMPORTANT 
-#
+# clear cache if we want to re-install
+rm -rf ~/.tmux 
 mkdir -p ~/.tmux/plugins/tpm 
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -15,12 +16,15 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # You need sudo permission for this. This is kinda sus....
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
-rm -rf /opt/nvim
+sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 
 rm *.gz
 
 # fzf 
+
+# to reinstall it 
+rm -rf ~/.oh-my-zsh
 
 # fucking dumbass shitter overwriting configs and shit fuck you fuck you fuck you 
 yes n | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -29,4 +33,4 @@ yes n | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/ma
 
 rm  ~/.zshrc
 
-chsh -s $(which zsh)
+sudo chsh -s $(which zsh)

@@ -15,4 +15,5 @@ for dir in $(echo $env_dirs); do
 	cd "$dir"
 	./install.sh
 	stow --adopt -v -t ~ . --ignore install.sh
+	cd ..
 done
