@@ -1,31 +1,5 @@
 local plugins = {
-{ -- we will have to see how useful this really is. Already got a barebones docker setup going still have not developed shit tho. still need to mount files and actualy do shit. need to dig int o how this works?  
-  "arnaupv/nvim-devcontainer-cli",
-  opts = {
-    -- By default, if no extra config is added, following nvim_dotfiles are
-    -- installed: "https://github.com/LazyVim/starter"
-    -- This is an example for configuring other nvim_dotfiles inside the docker container
-    nvim_dotfiles_repo = "https://github.com/thomasyang18/dotfiles.git",
-    nvim_dotfiles_install_command = "cd ~/nvim_dotfiles/ && ./install.sh",
-	nvim_dotfiles_branch = "master", -- they didnt even provide a proper install...
-	-- In case you want to change the way the devenvironment is setup, you can also provide your own setup
-    setup_environment_repo = "https://github.com/arnaupv/setup-environment",
-    setup_environment_install_command = "./install.sh -p 'nvim stow zsh'",
-  },
-  keys = {
-    -- stylua: ignore
-    {
-      "<leader>cdu",
-      ":DevcontainerUp<cr>",
-      desc = "Up the DevContainer",
-    },
-    {
-      "<leader>cdc",
-      ":DevcontainerConnect<cr>",
-      desc = "Connect to DevContainer",
-    },
-  }
-},
+	-- https://github.com/arnaupv/nvim-devcontainer-cli might be an interesting plugin, but lets learn how to spin up our own docker first....
 	{
 		"epwalsh/obsidian.nvim",
 		version = "*", -- recommended, use latest release instead of latest commit
