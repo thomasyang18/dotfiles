@@ -13,7 +13,6 @@ fi
 # Loop through filtered list of directories
 for dir in $(echo $env_dirs); do
 	cd "$dir"
-	echo "install.sh" > .stow-local.ignore
 	./install.sh
-	stow --adopt -v -t ~ .
+	stow --adopt -v -t ~ . --ignore install.sh
 done
