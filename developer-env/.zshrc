@@ -121,6 +121,6 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 # Created by `pipx` on 2025-03-10 17:39:15
-export PATH="$PATH:/home/bobbily/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

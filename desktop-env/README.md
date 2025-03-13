@@ -57,10 +57,17 @@ Okay mako and wofi just don't run presumably because:
     
 
 ---
-also need flashfocus
+also need flashfocus. Install that via pip. Then, on older installations, since ~/.local/bin does not seem to be default in path, we just call it directly in sway config.
 
 Mako no longer depends on fastfetch. However, filetreeprinter still weird.
 
 
+
+also need to mkdir ~/.local/bin/gui-apps/ and do manual symlinking.
+
+jq brightnessctl are also dependencies 
+
+
+okay pactl 13.99 just doenst work. Mayeb I should've stuck with fastfetch lmao...
 
 
