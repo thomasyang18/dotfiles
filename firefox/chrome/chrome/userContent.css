@@ -1,0 +1,250 @@
+/* reset stylesheet*/ 
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* the above may break stuff but seems useful regardldess */ 
+
+
+
+
+
+
+/* highly susppcios, this is the main difference betwen me and backup. we set all divs to transparent... lmao.... */ 
+div {
+	background: #00000000 !important;
+}
+
+
+body, html 
+{
+    background: transparent !important;
+}
+
+
+table, tr, td {
+	background: #23213622 !important;  
+}
+
+code,pre {
+	background: #362938dd !important;
+}
+
+
+/* I literally deleted the inline css and this is sSTILL not fucking applying. Theres literally NOT A SINGLE THING APPLYING HERE BESIDES MY CSS. I VERIFIED. and the button is STILL NOT CHANGING COLORS. What the fuck? Fuck codeforces dude;*/
+input[type="submit"],
+input[type="button"],
+input[type="search"],
+input[type="file"], 
+select
+{
+	opacity: 0.5;
+	color: #000 !important;
+} /* idk why buttons are so doomed lmao */ 
+
+
+/* Oh, and arch man page online doesnt have transparent input but cf does. Fuck you arch too. Hoyl shit, what is with these dumb fucking websites and being unable to style a button. */ 
+
+
+input {
+	background: transparent  !important;
+}
+
+* {	
+color: #f3eadf ;
+}
+
+a:link {
+	color: #f3eadf !important;
+}
+a:visited {
+	color: #ffafaf !important;
+}
+
+[class*="nav"], [class*="css"] {
+	background: transparent !important;
+}
+
+@-moz-document domain("reddit.com") {
+	.grid-container {
+		background: transparent !important;
+	} 
+}    
+
+
+
+
+@-moz-document domain("youtube.com") {
+    ytd-app {
+        background: transparent !important;
+    }
+
+    #background, #content{
+        background: transparent !important;
+    }
+						
+	#scroll-container, #cinematics-container {
+		display: none !important; /* this is a hack, but its a good one i guess */
+		background-color: transparent !important;
+		background: transparent !important;
+	}
+	
+	.style-scope, .ytSearchboxComponentInputBox {
+		background: transparent !important;
+	}
+	
+	#player {
+		opacity: 0.76;
+	}
+
+}
+
+
+@-moz-document domain("discord.com") {
+	#app-mount{
+		background: transparent !important;
+	}
+	nav {
+		background: transparent !important;
+	}
+	
+	/* general must haves */ 
+	[class^="app"],
+	[class^="bg"],
+	[class^="content"],
+	[class^="container"],
+	[class^="base"],
+	[class^="chat"]
+	{
+		background: transparent !important;
+	}
+
+	/* specific i just tried until it worked lol */
+	/* roughly in order from more rigorus to less rigorous */
+
+	[class^="sidebar"],
+	[class^="scroller"],
+	[class^="thin"],
+	[class^="fade"],
+	[class^="panels"],
+
+	[class^="title"],
+
+	[class^="search"],
+
+	[class^="outer"],
+	[class^="theme"],
+
+
+	[class^="nowPlayingColumn"]
+	 {
+		background: transparent !important;
+	}
+	
+	/* weird ass floating thing in top panel is weird disable that shit */
+	[class^="children"]::after {
+  		display: none;
+	}
+
+	/* chat box */
+	/*[class^="themedBackground"] */
+
+	
+	[class^="themedBackground"], [class^="scrollableContainer"], [class^="channelTextArea"]	{
+		background: transparent !important;
+		  box-shadow: 0px 10px 14px rgba(0, 0, 0, 0.5); /* Adjust values as needed */
+	}
+
+	/*scrollableContainer__74017 themedBackground__74017*/
+	
+
+	
+	
+
+} 
+
+
+@-moz-document domain("chatgpt.com") {
+	/* most disgsting website ever. THIS IS DEFINITELY GOING TO BREAK AT SOME POINT. */
+	div.h-header-height.bg-token-main-surface-primary.font-semibold {
+  /* your styles */ background: transparent !important;
+}
+
+
+}
+
+@-moz-document domain("google.com") {
+	.sfbg {
+		background: transparent !important;
+	}
+	#appbar {
+		background: transparent !important;
+	}
+}
+
+
+
+/* cp websites ew */
+
+@-moz-document domain("codeforces.com") {
+	[class*="Lava"] {
+	} /* it seems like this shit is again going to be an issue ffs */ 
+	img[title="Codeforces"] {
+		display: none !important;
+	}
+}
+
+@-moz-document domain("atcoder.jp") {
+	[class^="btn"] {
+		background: #23213622 !important; 
+	}
+	li.active > a {
+	background: #23213622 !important;
+	}
+}

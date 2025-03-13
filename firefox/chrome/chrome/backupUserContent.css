@@ -1,0 +1,157 @@
+body, html {
+    background: transparent !important;
+	color: #f3eadf !important
+}
+
+/* EXCLUDE CONFIGS */
+/* This shit is impossible, it was worth a try though. */
+/*@-moz-document 
+	domain("reddit.com"), 
+	domain("news.ycombinator.com") 
+{
+    body, html {
+        background: revert !important;  /* Inherit the default background */
+
+@-moz-document regexp("^(https?:\\/\\/)?(?:(mozilla)\\.([^.]+)|([^.]+)\\.(mozilla))\\.[^.]+(?::\\d+)?(?:[\\/\\?#].*)?$")
+ {
+    /* Styles for Firefox on subdomains of mozilla.* */
+    body {
+        background: #f2e9cecc !important;
+    }
+}
+
+/* really annoying that i have to do this one by one. Maybe I need to add some way to detect if a browser supports light theme or not idk.... */ 
+/* apparently not supported. The ideal solution is something like, check if browser is making dark mode media queries, if so run script. */
+@-moz-document domain("man.archlinux.org")
+ {
+    /* Styles for Firefox on subdomains of mozilla.* */
+    body {
+        background: #f2e9cecc !important;
+    }
+}
+
+
+
+
+@-moz-document domain("reddit.com") {
+	.grid-container {
+		background: transparent !important;
+	} 
+}    
+
+@-moz-document domain("codeforces.com") {
+	.topic, .problem-statement, .second-level-menu {
+		background-color: white;
+	}
+	/*.ttypography {
+		color:white;
+	}*/
+}
+
+
+@-moz-document domain("youtube.com") {
+    ytd-app {
+        background: transparent !important;
+    }
+
+    #background, #content{
+        background: transparent !important;
+    }
+						
+	#scroll-container, #cinematics-container {
+		display: none !important;
+		background: transparent !important;
+	}
+	
+	.style-scope, .ytSearchboxComponentInputBox {
+		background: transparent !important;
+	}
+	
+	#player {
+		opacity: 0.85;
+	}
+
+}
+
+
+@-moz-document domain("discord.com") {
+	#app-mount{
+		background: transparent !important;
+	}
+	nav {
+		background: transparent !important;
+	}
+	
+	/* general must haves */ 
+	[class^="app"],
+	[class^="bg"],
+	[class^="content"],
+	[class^="container"],
+	[class^="base"],
+	[class^="chat"]
+	{
+		background: transparent !important;
+	}
+
+	/* specific i just tried until it worked lol */
+	/* roughly in order from more rigorus to less rigorous */
+
+	[class^="sidebar"],
+	[class^="scroller"],
+	[class^="thin"],
+	[class^="fade"],
+	[class^="panels"],
+
+	[class^="title"],
+
+	[class^="search"],
+
+	[class^="outer"],
+	[class^="theme"],
+
+
+	[class^="nowPlayingColumn"]
+	 {
+		background: transparent !important;
+	}
+	
+	/* weird ass floating thing in top panel is weird disable that shit */
+	[class^="children"]::after {
+  		display: none;
+	}
+
+	/* chat box */
+	/*[class^="themedBackground"] */
+
+	
+	[class^="themedBackground"], [class^="scrollableContainer"], [class^="channelTextArea"]	{
+		background: transparent !important;
+		  box-shadow: 0px 10px 14px rgba(0, 0, 0, 0.5); /* Adjust values as needed */
+	}
+
+	/*scrollableContainer__74017 themedBackground__74017*/
+	
+
+	
+	
+
+} 
+
+
+@-moz-document domain("chatgpt.com") {
+	/* most disgsting website ever. THIS IS DEFINITELY GOING TO BREAK AT SOME POINT. */
+	div.h-header-height.bg-token-main-surface-primary.font-semibold {
+  /* your styles */ background: transparent !important;
+}
+
+
+}
+
+@-moz-document domain("google.com") {
+	.sfbg {
+		background: transparent !important;
+	}
+	#appbar {
+		background: transparent !important;
+	}
+}
