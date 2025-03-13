@@ -4,7 +4,9 @@ Then put the dotfiles here; for example, chrome can just be symlinked with, well
 
 Call (from the firefox directory)
 
-stow -v -t ~/.mozilla/firefox/{profile_dir} .
+stow -v -t ~/.mozilla/firefox/{profile_dir}/ chrome
+
+[ig gnu stow didnt matter lol]
 
 ----
 
