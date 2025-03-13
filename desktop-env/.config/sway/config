@@ -5,7 +5,10 @@
 # Read `man 5 sway` for a complete reference.
 
 ### Variables
-set $bobbily_home /home/bobbily
+
+# set $~ /home/bobbily
+
+# Bobbily home was an alrigth idea, but its only an issue for sudo scripts I think. This should NOT BE hardcoded.
 
 #
 # Logo key. Use Mod1 for Alt.
@@ -34,11 +37,11 @@ include /etc/sway/config-vars.d/*
 
 #output * bg  ~/.config/sway/junko_bg_resized.png fill
 
-output * bg $bobbily_home/.config/sway/junko_bg_resized.png fill
+output * bg ~/.config/sway/junko_bg_resized.png fill
 
 
 set $general_lock swaylock \
-    --image $bobbily_home/.config/sway/byak_lock.png -s fill \
+    --image ~/.config/sway/byak_lock.png -s fill \
     --inside-color 8B008B \
     --ring-color FF000088 \
     --key-hl-color 8B0000 \
@@ -109,7 +112,7 @@ exec swayidle -w timeout 600 'systemctl suspend'
     # Start your launcher
 	
 	# Note that this is a custom directory for only the filtered out GUI apps I want. Fuck everything else. 
-    bindsym $mod+d exec $bobbily_home/.config/sway/wofi-gui.sh
+    bindsym $mod+d exec ~/.config/sway/wofi-gui.sh
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -239,9 +242,9 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Shift+p exec $general_lock
 
 # make printscreen work
-bindsym Print exec grim $bobbily_home/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png
+bindsym Print exec grim ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png
 
-bindsym Shift+Print exec grim -g "$(slurp)" $bobbily_home/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png
+bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png
 
 bindsym Ctrl+Print exec grim -g "$(slurp)" - | wl-copy
 
@@ -282,4 +285,4 @@ exec_always 'flashfocus -t 400 --flash-lone-windows never'
 # i am new to mako i guess
 exec_always mako
 
-bindsym $mod+Backspace exec --no-startup-id $bobbily_home/.config/sway/scripts/system_info.sh
+bindsym $mod+Backspace exec --no-startup-id $~/.config/sway/scripts/system_info.sh

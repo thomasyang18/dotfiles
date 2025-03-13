@@ -7,7 +7,7 @@ if pgrep -x wofi >/dev/null 2>&1 && killall wofi; then
 fi
 
 # Directory containing symlinked GUI apps
-APP_DIR="/home/bobbily/.local/bin/gui-apps"
+APP_DIR="~/.local/bin/gui-apps"
 
 # List only symlink names (using -maxdepth 1 to avoid recursing)
 app_list=$(find "$APP_DIR" -maxdepth 1 -type l -printf "%f\n")

@@ -24,11 +24,10 @@ fi
 # This script collects output from fastfetch, date, ncal, a custom workspace tree printer,
 # and the current workspace, then sends it as a formatted, pretty notification.
 # Bind this script to a hotkey in sway to view a "terminal" style snapshot of your system info.
-bob_home="/home/bobbily"
 # Gather fastfetch output.
 fastfetch_output="$(
-  fastfetch --config "$bob_home/.config/fastfetch/zsh_startup.json" \
-            --logo "$bob_home/.config/fastfetch/startup.txt"
+  fastfetch --config "~/.config/fastfetch/zsh_startup.json" \
+            --logo "~/.config/fastfetch/startup.txt"
 )"
 # Process fastfetch output:
 # Highlight percentages (e.g., 45%) and temperatures (e.g., 23°C or 75°F) in gold,
