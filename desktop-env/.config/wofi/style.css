@@ -1,0 +1,53 @@
+* {
+	border-radius: 15px;
+	border: none;
+	/*opacity: 0;*/
+	color: white;
+}
+
+window {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 32px;
+  font-weight: bold;
+	
+  color: white;
+
+  background-image: url("file:///home/bobbily/.config/wofi/wofi-bg_dark.png"); /*I give up, static it is, GTK seems impossible. Maybe this is excuse to look into rendering engine....*/
+  opacity: 0.5;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Input box */
+#input {
+	border: none;
+	color: white;
+	border-radius: 6px;
+	padding: 8px;
+	background:transparent
+} 
+
+
+
+#input:focus, #entry:focus {box-shadow: none; border: none;}
+
+	
+/* Entry selection - thicker and transparent */
+#entry:selected {
+	border: none;
+	background-color: rgba(179, 42, 161, 0.4); /* Semi-transparent but no blur */
+	border-radius: 8px;
+	padding: 12px;
+	box-shadow: none;
+	outline: none;
+}
+
+/* Entry styling */
+#entry {
+	padding: 8px;
+} 
+
+
+
+
