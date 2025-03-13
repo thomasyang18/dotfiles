@@ -13,9 +13,10 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Neovim  !!! IMPORTANT 
 
+# You need sudo permission for this. This is kinda sus....
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
 rm -rf /opt/nvim
-tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 
 rm *.gz
 

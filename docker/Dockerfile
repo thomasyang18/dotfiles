@@ -73,3 +73,5 @@ RUN git clone https://github.com/thomasyang18/dotfiles.git && \
     cd dotfiles && \
     ./install.sh && \
     ./stow.sh
+
+
