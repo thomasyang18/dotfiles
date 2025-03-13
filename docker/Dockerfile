@@ -67,3 +67,9 @@ WORKDIR /home/$USERNAME
 
 # As the user, make the directory we will map the volume to, as the user, so it has proper permissions
 RUN mkdir -p /home/$USERNAME/volume
+
+# experimental: Yes this will work while the repo is public but kinda sus man 
+RUN git clone https://github.com/thomasyang18/dotfiles.git && \
+    cd dotfiles && \
+    ./install.sh && \
+    ./stow.sh
