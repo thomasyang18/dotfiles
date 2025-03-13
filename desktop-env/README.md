@@ -70,4 +70,65 @@ jq brightnessctl are also dependencies
 
 okay pactl 13.99 just doenst work. Mayeb I should've stuck with fastfetch lmao...
 
+-----
+
+# OKAY THERES OBVIOUSLY BUGS AND SHIT BUT I THINK THIS FINALLY WORKS. JESUS CHRIST. OKAY. 
+
+## Junko cursor!
+
+Go to webstie, go to ~/.local/share/icons, extract so that directory looks like "Junko/cursors" (so just unzip .). 
+
+Go to /usr/share/icons, change default theme's index to Junko. 
+
+However, this may not work on apps like firefox, because X11 and Wayland moment? IDK. 
+
+
+## WHAT DID NOT WORK:
+
+- .config/gtk-X/settings.ini. Setting that did not work at all, do not do this. 
+
+# Me from a few days ago being giganticosity 
+
+
+https://askubuntu.com/questions/1399383/how-to-install-firefox-as-a-traditional-deb-package-without-snap-in-ubuntu-22
+
+
+Although on my laptop I already had it as a apt package, but from the official ubuntu repo...? Not ppa? IDFK. Im just gonan install mozilla's one thanks
+
+---
+
+Okay this didnt fix cursor issue, but GOOD TO KNOW GOOD TO KNOW!!!. It fixed some issue on my laptop, but ubuntu 20.04 is goated IG. 
+
+---
+
+Okay the braindead solution of just 
+
+```
+gsettings set org.gnome.desktop.interface cursor-theme Junko
+```
+
+and then also copying that same icon directory globally to /use/share/icons just works. Who knew. Crazy.
+
+---
+
+# WOFI 
+
+More undocumented behavior! cal can be symlinked to ncal, fucking up my display! Yay!
+
+jk on my system its symlinked too, but i think it default calls the -h option. For a portable solution call ncal -b -h. 
+
+----
+
+### !!IMPORTANT 
+
+https://github.com/fennerm/flashfocus/wiki#systemd-config
+
+https://github.com/swaywm/sway/wiki/Systemd-integration
+
+
+LEARN THIS SHIT THIS IS HOW PROGRAMS SHOULD BE run
+unfortunately you have to manually register flashfocus with systemd, but I guess its fine thats more idiomatic we're learning 
+
+uhh... cba to fix this bug right now, fuck this bug. 
+
 
