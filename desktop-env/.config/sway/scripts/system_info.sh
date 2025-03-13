@@ -20,13 +20,11 @@ battery=$(cat /sys/class/power_supply/BAT*/capacity 2>/dev/null || echo "N/A")
 volume=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | head -n 1)
 
 # Get WiFi name and signal strength using nmcli (NetworkManager)
-wifi_info=$(nmcli -t -f active,ssid,signal dev wifi | grep '^yes:')
-if [ -z "$wifi_info" ]; then
+wifi_name=$(iw dev | grep -i ssid | awk '{print $2}')
+if [ -z "$wifi_name" ]; then
     wifi_output="<span foreground=\"#87ceeb\">WiFi: </span><span foreground=\"#ff4500\" weight=\"bold\">Disconnected</span>"
 else
-    wifi_name=$(echo "$wifi_info" | cut -d: -f2)
-    wifi_signal=$(echo "$wifi_info" | cut -d: -f3)
-    wifi_output="<span foreground=\"#87ceeb\">WiFi: </span><span foreground=\"#ffd700\">$wifi_name ($wifi_signal%)</span>"
+    wifi_output="<span foreground=\"#87ceeb\">WiFi: </span><span foreground=\"#ffd700\">$wifi_name</span>"
 fi
 
 # Set battery color (red if <20%)
