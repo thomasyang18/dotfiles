@@ -1,4 +1,18 @@
 #!/bin/zsh
+
+# The idea is that I will refactor and delete this eventually; I don't likoe the dependency on fastfetch.
+
+# I installed in local bin to not corrupt either. Like, I only need these four things:
+# - wifi 
+# - brightness
+# - volume 
+# - battery
+
+# and any other system info i just check with btop lol
+
+# But we will have to see. 
+ 
+
 # Idempotent double functions as dismissing all 
 # Check if there are existing notifications
 if [ "$(makoctl list | jq '.data[0] | length')" -gt 0 ]; then

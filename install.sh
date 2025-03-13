@@ -16,6 +16,22 @@ done
 
 rm build_dir/install.sh
 
+# ------ NEW - ONLY INSTALL DEV DEPENDENCIES -----
+# (UI is still WIP, tons of undocumented dependencies and shit but we ball)
+
+# Check if a "--dev" flag was provided
+if [ "$1" = "--dev" ]; then
+    if [ -d "developer-env" ]; then
+        cd developer-env
+        ./install.sh
+        cd ..
+    else
+        echo "developer-env not found!"
+    fi
+    exit 0
+fi
+
+# ------------
 
 for dir in *-env; do
     if [ -d "$dir" ]; then
