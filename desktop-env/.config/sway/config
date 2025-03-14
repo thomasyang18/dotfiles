@@ -286,3 +286,14 @@ exec_always '~/.local/bin/flashfocus -t 400 --flash-lone-windows never'
 exec_always mako
 
 bindsym $mod+Backspace exec --no-startup-id ~/.config/sway/scripts/system_info.sh
+
+
+# Inhibit fullscreen hack hopefully
+for_window [app_id=".*"] inhibit_idle fullscreen
+for_window [class=".*"] inhibit_idle fullscreen
+for_window [instance=".*"] inhibit_idle fullscreen
+for_window [title=".*"] inhibit_idle fullscreen
+
+
+
+
