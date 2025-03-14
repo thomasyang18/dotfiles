@@ -25,7 +25,9 @@ local opts = {
     -- Only intended to be used for plugin development / debugging.
     log_runtime = false,
     -- Filetypes this plugin will run on.
-    file_types = { 'markdown' },
+    file_types = { 'markdown', 
+		-- 'txt', -- ideally I look into this some day... I just want to interpret txt as a md file lol 
+	},
     -- Additional events that will trigger this plugin's render loop.
     change_events = {},
     -- Out of the box language injections for known filetypes that allow markdown to be interpreted
