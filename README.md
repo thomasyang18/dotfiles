@@ -46,3 +46,12 @@ The dockerfile should just have things and it should just work for building a pr
 At the moment you still need to go clone the dotfiles manually though; a consequence of not using devcontainer-cli nor the nvim extension :O it's fine though just clone this repo into the image when you're ready. 
 
 Also not dealing with mounts and volumes yet just gonna keep it simple dont wanna accidetnally brick something  
+
+---
+# install.sh pecularity 
+
+Alright so there's a genuine use case for having a seperate both desktop and dev flag inside of install.sh (as opposed to JUST dev)
+
+Desktop: Sets up terminal, prettify it, etc. 
+
+I'm gonna run a new user and debug wayland applications. Docker has my dev image, not polluting the system. The config files, well, I have all the binaries installed globally, I just need to copy some configs over, make it pretty, have my usual terminal keybinds to make it good. So yeah 
