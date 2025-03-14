@@ -12,7 +12,9 @@ mkdir -p ~/.tmux/plugins/tpm
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-mkdir ~/.config/tmux # prevent stow from symlinking this shit, because ONLY the fact that tmux.conf is there is important, NOT the directory (and this actually matters because tmux will install plugins in this folder... go figure, weird fucking programs
+mkdir -p ~/.config/tmux # prevent stow from symlinking this shit, because ONLY the fact that tmux.conf is there is important, NOT the directory (and this actually matters because tmux will install plugins in this folder... go figure, weird fucking programs
+
+rm -rf ~/.config/tmux/* # clear any shitters here 
 
 # Neovim  !!! IMPORTANT 
 
