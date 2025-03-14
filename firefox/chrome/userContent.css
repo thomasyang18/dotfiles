@@ -104,10 +104,10 @@ color: #f3eadf ;
 }
 
 a:link {
-	color: #f3eadf !important;
+	color: #f3eadf ;
 }
 a:visited {
-	color: #ffafaf !important;
+	color: #ffafaf ;
 }
 
 [class*="nav"], [class*="css"] {
