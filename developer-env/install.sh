@@ -25,6 +25,8 @@ sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 
 rm *.gz
 
+rm -rf ~/.local/share/nvim # fuck caching
+
 # notice here how we DO want stow to symlink this, since we want it to manage the whole directory.
 
 # fzf 
