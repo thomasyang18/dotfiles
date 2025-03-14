@@ -55,10 +55,9 @@ RUN apt -y --no-install-recommends install \
 	tmux
 
 RUN apt-get -y --no-install-recommends install \
-	ripgrep \
-	nodejs
+	ripgrep
 
-# nodejs needed for treesitter
+# nodejs needed for treesitter... or is it? I'm gonna roll without it and see whats up 
 
 # curl zsh stow here. DO NOT RUN apt commands in a .sh file I guess. because now all "~" declarations are w.r.t. the sudo user.... 
 

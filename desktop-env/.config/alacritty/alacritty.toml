@@ -15,7 +15,7 @@ size = 12.0
 # Colors section of "Alacritty - TOML configuration file format"
 # https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd#colors
 
-# moon config. very pretty!
+# rose pine moon config. very pretty!
 
 [colors.primary]
 foreground = "#e0def4"
@@ -26,7 +26,7 @@ bright_foreground = "#e0def4"
 
 [colors.cursor]
 text = "#e0def4"
-cursor = "#b1a9de" #edited to be lighter since I can't see 3:
+cursor = "#56526e" 
 
 [colors.vi_mode_cursor]
 text = "#e0def4"
