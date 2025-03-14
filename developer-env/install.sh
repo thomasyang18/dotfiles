@@ -12,6 +12,8 @@ mkdir -p ~/.tmux/plugins/tpm
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+mkdir ~/.config/tmux # prevent stow from symlinking this shit, because ONLY the fact that tmux.conf is there is important, NOT the directory (and this actually matters because tmux will install plugins in this folder... go figure, weird fucking programs
+
 # Neovim  !!! IMPORTANT 
 
 # You need sudo permission for this. This is kinda sus....
@@ -20,6 +22,8 @@ sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 
 rm *.gz
+
+# notice here how we DO want stow to symlink this, since we want it to manage the whole directory.
 
 # fzf 
 
