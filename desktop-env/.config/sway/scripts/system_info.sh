@@ -28,7 +28,7 @@ else
 fi
 
 # Set battery color (red if <20%)
-if [ "$battery" != "N/A" ] && [ "$battery" -lt 20 ]; then
+if [ "$battery" != "N/A" ] && [ "$battery" -lt 21 ]; then
     battery_color="#ff4500"
 else
     battery_color="#ffd700"

@@ -4,4 +4,9 @@
 #
 # But hey, it works :D 
 
+rm -rf ~/.config/sway
+rm -rf ~/.config/wofi
+rm -rf ~/.config/alacritty
+rm -rf ~/.config/mako
+
 echo "Done" # :) 

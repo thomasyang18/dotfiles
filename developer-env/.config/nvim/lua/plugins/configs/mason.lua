@@ -1,6 +1,11 @@
 local options = {
-  ensure_installed = { "lua-language-server" }, -- not an option from mason.nvim
-
+  ensure_installed = { "lua-language-server",-- not an option from mason.nvim
+-- custom added, because in core/utils.lua, user preferences override stuff 
+		-- which normally would be fine... but mason is a PACKAGE MAANGER not a fucking PREFERENCE jesus CHRIST OML WHATEVER FUCK THIS SHIT 
+	"clangd",
+		"clang-format",
+		"codelldb"
+	},
   PATH = "skip",
 
   ui = {

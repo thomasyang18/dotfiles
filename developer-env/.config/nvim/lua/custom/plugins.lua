@@ -61,15 +61,6 @@ local plugins = {
 			require "custom.configs.lspconfig"
 		end,
 	},
-	{
-		"williamboman/mason.nvim",
-		opts = {
-			ensure_installed = {
-				"clangd",
-				"clang-format",
-				"codelldb",
-			}
-		}
-	}
+	
 }
 return plugins
