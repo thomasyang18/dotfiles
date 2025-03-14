@@ -121,6 +121,8 @@ local default_plugins = {
     event = "User FilePost",
     config = function()
       require "plugins.configs.lspconfig"
+	-- USER CONFIGS DOWN HERE 
+	  require "custom.configs.lspconfig" -- again with the mason shit, we're not playing games, we integrate all our config shere 
     end,
   },
 
@@ -137,7 +139,7 @@ local default_plugins = {
         config = function(_, opts)
           require("plugins.configs.others").luasnip(opts)
         end,
-      },
+      },	
 
       -- autopairing of (){}[] etc
       {
