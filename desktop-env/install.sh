@@ -4,10 +4,10 @@
 #
 # But hey, it works :D 
 
-rm -rf ~/.config/sway
-rm -rf ~/.config/wofi
-rm -rf ~/.config/alacritty
-rm -rf ~/.config/mako
-rm -rf ~/.config/hypr
+rm -f ~/.config/sway
+rm -f ~/.config/wofi
+rm -f ~/.config/alacritty
+rm -f ~/.config/mako
+rm -f ~/.config/hypr
 
 echo "Done" # :) 

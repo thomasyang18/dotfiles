@@ -17,9 +17,13 @@ mkdir -p ~/.tmux/plugins/tpm
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-mkdir -p ~/.config/tmux # prevent stow from symlinking this shit, because ONLY the fact that tmux.conf is there is important, NOT the directory (and this actually matters because tmux will install plugins in this folder... go figure, weird fucking programs
+## THIS IS WHY WE MIGHT NEED A BETTER SOLUTION.
+# WE DELETE LIKE THIS BECAUSE WE KNOW IN OUR CONFIGS THIS IS NOT GOING TO BE AN OWNED SYMLINK. so delete it. doesnt affect the git repo.
+# In the old way, where we deleteed ~/.config/tmux.... if it was already symlinked or some bullshit it would delete tmux.conf. 
+# Tons of implicit behavior bugs. 
+rm -rf ~/.config/tmux
 
-rm -rf ~/.config/tmux/* # clear any shitters here 
+mkdir -p ~/.config/tmux # prevent stow from symlinking this shit, because ONLY the fact that tmux.conf is there is important, NOT the directory (and this actually matters because tmux will install plugins in this folder... go figure, weird fucking programs
 
 # Neovim  !!! IMPORTANT 
 
