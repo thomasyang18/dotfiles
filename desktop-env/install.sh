@@ -8,5 +8,6 @@ rm -rf ~/.config/sway
 rm -rf ~/.config/wofi
 rm -rf ~/.config/alacritty
 rm -rf ~/.config/mako
+rm -rf ~/.config/hypr
 
 echo "Done" # :) 

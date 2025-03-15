@@ -142,3 +142,8 @@ nmcli device wifi connect "SSID_NAME" password "YOUR_PASSWORD"
 nmcli connection show --active
 
 don't forget modprobe, and rfkill, if any weird hardware shit is disabling wifi for some reason
+
+----
+# lol @ sway + wayland
+
+ehh ill just make wayland like sway its whatever, the main thing thats ugly is all the X bullshit 

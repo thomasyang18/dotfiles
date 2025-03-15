@@ -47,4 +47,4 @@ yes n | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/ma
 
 rm  ~/.zshrc
 
-sudo chsh -s $(which zsh)
+sudo chsh -s $(which zsh) # doesn't work on arch, but whatever. this is why we dont wanna exit on failure :3 chsh is bloat :3 :3 :3 :3 :3
