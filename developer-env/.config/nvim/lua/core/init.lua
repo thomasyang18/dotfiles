@@ -12,7 +12,11 @@ g.transparency = config.ui.transparency
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
 
-opt.clipboard = "unnamedplus"
+-- I don't think I want this synchronized with the systme clipboard
+-- Now, we can do "+p, and it will be fine. We can finally copy text back and forth painlessly... 
+-- Well, what happens if we want to copy INTO system clipboard? Uh....
+-- opt.clipboard = "unnamedplus"
+-- :%delete + lol nice 
 opt.cursorline = true
 
 -- Indenting
