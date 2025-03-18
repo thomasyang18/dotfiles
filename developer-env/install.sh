@@ -28,7 +28,7 @@ mkdir -p ~/.config/tmux # prevent stow from symlinking this shit, because ONLY t
 # Neovim  !!! IMPORTANT 
 
 # First, do not install a new neovim if one already exists 
-if command -v "$app" &> /dev/null; then
+if command -v "neovim" &> /dev/null; then
 	# You need sudo permission for this. This is kinda sus....
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz /tmp/ 
 	sudo rm -rf /opt/nvim
@@ -39,8 +39,9 @@ rm -rf ~/.config/nvim # delete the symlink if so
 
 # notice here how we DO want stow to symlink this, since we want it to manage the whole directory.
 
-# fzf 
+# fzf  # [TODO, but either manual install or nixOS OP :D ]
 
+# if command -v "" [TODO maybe add check for on nixos, dont install like this? Although I'm worried it might overwrite my zsh file, this is more controlled.... ]
 # to reinstall it 
 rm -rf ~/.oh-my-zsh
 
