@@ -27,14 +27,14 @@ mkdir -p ~/.config/tmux # prevent stow from symlinking this shit, because ONLY t
 
 # Neovim  !!! IMPORTANT 
 
-# You need sudo permission for this. This is kinda sus....
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
-sudo rm -rf /opt/nvim
-sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
-
-rm *.gz
-
-rm -rf ~/.local/share/nvim # fuck caching
+# First, do not install a new neovim if one already exists 
+if command -v "$app" &> /dev/null; then
+	# You need sudo permission for this. This is kinda sus....
+	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz /tmp/ 
+	sudo rm -rf /opt/nvim
+	sudo tar -C /opt -xzf /tmp/nvim-linux-x86_64.tar.gz
+fi
+# rm -rf ~/.local/share/nvim # fuck caching
 rm -rf ~/.config/nvim # delete the symlink if so 
 
 # notice here how we DO want stow to symlink this, since we want it to manage the whole directory.
