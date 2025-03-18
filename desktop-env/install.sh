@@ -22,12 +22,12 @@ rm -rf ~/.local/bin/gui-apps/*
 
 # Symlink all our favorite things 
 # List of applications to symlink
-apps=("firefox" "pavucontrol" "gimp")
+apps="firefox pavucontrol gimp"
 
-# Loop through each app
-for app in "${apps[@]}"; do
+# Loop through each app using for loop with word splitting
+for app in $apps; do
     # Check if the application is available in the PATH
-    if command -v "$app" &> /dev/null; then
+    if command -v "$app" > /dev/null 2>&1; then
         # Create the symlink if the application is found
         ln -s "$(command -v "$app")" ~/.local/bin/gui-apps/
         echo "Symlinked $app"
