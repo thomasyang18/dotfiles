@@ -123,4 +123,6 @@ export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 # Created by `pipx` on 2025-03-10 17:39:15
 export PATH="$PATH:$HOME/.local/bin"
 
+# Integrations depending on if we manually built or not. NixOS is nice so it has it globally, so source is fine; otherwise we need to manually do it locally 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
