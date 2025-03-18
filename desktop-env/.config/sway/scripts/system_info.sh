@@ -51,6 +51,12 @@ date_output="<span foreground=\"#90ee90\" weight=\"bold\">$date_output</span>"
 
 # Get calendar information using cal instead of ncal
 cal_output="$(ncal -b -h)"
+
+# Hackaround for nixos, becuase nixos doesnt have the original freebsdutils thing (man it sucks)
+if [ -z "$cal_output" ]; then
+  cal_output="$(cal --color=never)"
+fi
+
 # Get the current day number
 current_day=$(date +%-d)
 # Highlight the current day in gold and make it bold
