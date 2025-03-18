@@ -30,7 +30,7 @@ mkdir -p ~/.config/tmux # prevent stow from symlinking this shit, because ONLY t
 # First, do not install a new neovim if one already exists 
 if command -v "neovim" &> /dev/null; then
 	# You need sudo permission for this. This is kinda sus....
-	curl -L https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz /tmp/nvim.tar.gz 
+	curl -L https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz --output /tmp/nvim.tar.gz 
 	sudo rm -rf /opt/nvim
 	sudo tar -C /opt -xzf /tmp/nvim.tar.gz
 fi
