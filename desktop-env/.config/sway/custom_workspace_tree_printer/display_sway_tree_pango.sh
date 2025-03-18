@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 # display_sway_tree_pango.sh – Generate a custom workspace tree using Pango markup.
 # This replaces ANSI escape codes with Pango markup based on your config mapping.
 

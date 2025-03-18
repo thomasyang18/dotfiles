@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # Check if there are existing notifications; dismiss if so
 if [ "$(makoctl list | jq '.data[0] | length')" -gt 0 ]; then
