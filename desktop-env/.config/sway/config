@@ -112,7 +112,7 @@ exec swayidle -w timeout 600 'systemctl suspend'
     # Start your launcher
 	
 	# Note that this is a custom directory for only the filtered out GUI apps I want. Fuck everything else. 
-    bindsym $mod+d exec ~/.config/sway/wofi-gui.sh
+    bindsym $mod+d exec ~/.config/wofi/wofi-gui.sh
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
