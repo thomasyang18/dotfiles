@@ -1,10 +1,18 @@
 #!/usr/bin/env zsh
 
-# Check if there are existing notifications; dismiss if so
-if [ "$(makoctl list | jq '.data[0] | length')" -gt 0 ]; then
-    makoctl dismiss --all
-    exit 0
+# TODO TODO TODO: Refactor, so that hyprland and sway will call different system info behavior; otherwise, I want the rest of the panel to stay the same so... it stays the same like this.
+#
+# Notice that all behavior is the same across systems BESIDES printing the workspace logic. So. Refacotr that, thanks.
+
+if [[ $# -ne 1 ]]; then
+  echo "Error: This script requires exactly one argument."
+  echo "Usage: $0 <window manager specific script>"
+  echo "See the sway and hyprland scripts for more details."
+  exit 1
 fi
+
+# Oh my fucking god breaking mako change in 1.10 breaks my check to basically "dismiss system info if any processes are open because not jq anymore" 
+# makoctl dismiss --all
 
 tilde=~
 
@@ -71,14 +79,13 @@ ncal_output="<span foreground=\"#ffffff\">$cal_output</span>"
 
 
 
-workspace_name="$(swaymsg -t get_workspaces | jq -r '.[] | select(.focused) | .name')"
+# workspace_name="$(swaymsg -t get_workspaces | jq -r '.[] | select(.focused) | .name')"
 # Get the custom workspace tree output from our new Pango-enabled script.
-sway_tree_output="$("${tilde}/.config/sway/custom_workspace_tree_printer/display_sway_tree_pango.sh")"
+#sway_tree_output="$("${tilde}/.config/sway/custom_workspace_tree_printer/display_sway_tree_pango.sh")"
 # Now highlight the current workspace in the tree output with a bright color (magenta)
-sway_tree_output=$(echo "$sway_tree_output" | sed -E "s/(Workspace: $workspace_name)/<span foreground=\"#d2bc44\" weight=\"bold\">[[\\1]]<\/span>/g")
-# Get the current workspace wrapped in orange.
-workspace_output="You are on workspace: $workspace_name"
-workspace_output="<span foreground=\"#ffa500\" weight=\"bold\">$workspace_output</span>"
+# sway_tree_output=$(echo "$sway_tree_output" | sed -E "s/(Workspace: $workspace_name)/<span foreground=\"#d2bc44\" weight=\"bold\">[[\\1]]<\/span>/g")
+
+
 # Create a horizontal rule for separation (in grey).
 hr="<span foreground=\"#cccccc\">────────────────────</span>"
 # Build the full message using Pango markup.
@@ -90,7 +97,8 @@ message+="$date_output\n"
 message+="$hr\n"
 message+="$ncal_output\n"
 message+="$hr\n"
-message+="$sway_tree_output\n"
+message+="$($1)" # The sway tree script 
+
 
 
 
