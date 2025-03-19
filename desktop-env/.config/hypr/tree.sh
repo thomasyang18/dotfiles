@@ -2,7 +2,7 @@
 # display_hyprland_tree_pango.sh - Generate a custom workspace tree with Pango markup for Hyprland
 
 # Setup path to config file
-CONFIG_FILE="$HOME/.config/hypr/scripts/tree_printer/config.json"
+CONFIG_FILE="$HOME/.config/mako/workspace_tree_config.json"
 
 if [ ! -f "$CONFIG_FILE" ]; then
   echo "Error: Configuration file '$CONFIG_FILE' not found."

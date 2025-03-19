@@ -285,7 +285,8 @@ exec_always 'flashfocus -t 400 --flash-lone-windows never'
 # i am new to mako i guess
 exec_always mako
 
-bindsym $mod+Backspace exec --no-startup-id ~/.config/sway/scripts/system_info.sh
+# TODO this is untested but should work 
+bindsym $mod+Backspace exec --no-startup-id ~/.config/mako/system_info.sh ~/.config/sway/tree.sh 
 
 
 # Inhibit fullscreen hack hopefully

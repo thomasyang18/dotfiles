@@ -7,7 +7,7 @@
 tilde=~
 
 
-config_file="${tilde}/.config/sway/custom_workspace_tree_printer/config.json"
+config_file="${tilde}/.config/mako/workspace_tree_config.json"
 if [ ! -f "$config_file" ]; then
   echo "Error: Configuration file '$config_file' not found."
   exit 1
