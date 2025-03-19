@@ -9,6 +9,11 @@ g.toggle_theme_icon = "   "
 g.transparency = config.ui.transparency
 
 -------------------------------------- options ------------------------------------------
+-- TODO i dont know if this actually works lmao need to verify 
+opt.foldmethod = "indent" -- nice folding commands enabled
+
+
+
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
 
