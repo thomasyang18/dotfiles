@@ -1,53 +1,6 @@
+/* backup shitty stylesheet for now I guess*/
+/* still breaks on hyprland arch, weird selection overlay or some shit idk cba to fix it rn */
+
 * {
-	border-radius: 15px;
-	border: none;
-	/*opacity: 0;*/
-	color: white;
+	opacity: 0;
 }
-
-window {
-  font-family: "JetBrainsMono Nerd Font";
-  font-size: 32px;
-  font-weight: bold;
-	
-  color: white;
-
-/* We can give it a background image, but we delete it for sake of portability.... otherwise would have to hardcode file strings eww*/
-  opacity: 0.5;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-/* Input box */
-#input {
-	border: none;
-	color: white;
-	border-radius: 6px;
-	padding: 8px;
-	background:transparent
-} 
-
-
-
-#input:focus, #entry:focus {box-shadow: none; border: none;}
-
-	
-/* Entry selection - thicker and transparent */
-#entry:selected {
-	border: none;
-	background-color: rgba(179, 42, 161, 0.4); /* Semi-transparent but no blur */
-	border-radius: 8px;
-	padding: 12px;
-	box-shadow: none;
-	outline: none;
-}
-
-/* Entry styling */
-#entry {
-	padding: 8px;
-} 
-
-
-
-
