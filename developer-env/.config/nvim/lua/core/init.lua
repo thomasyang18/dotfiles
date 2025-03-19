@@ -11,7 +11,7 @@ g.transparency = config.ui.transparency
 -------------------------------------- options ------------------------------------------
 -- TODO i dont know if this actually works lmao need to verify 
 opt.foldmethod = "indent" -- nice folding commands enabled
-
+-- the issue is this doesnt show a nice "z" menu like before so idk 
 
 
 opt.laststatus = 3 -- global statusline
