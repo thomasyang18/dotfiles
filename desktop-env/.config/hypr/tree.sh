@@ -63,3 +63,6 @@ $sorted_workspaces[] | . as $ws |
     (if .floating then " (floating)" else "" end) + "</span>"
   )
 '
+
+
+#TODO: Make it display current workspace and current workspace highlighting + color. 

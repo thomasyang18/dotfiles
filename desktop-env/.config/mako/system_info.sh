@@ -77,14 +77,11 @@ ncal_output="<span foreground=\"#ffffff\">$cal_output</span>"
 
 
 
-
-
-# workspace_name="$(swaymsg -t get_workspaces | jq -r '.[] | select(.focused) | .name')"
 # Get the custom workspace tree output from our new Pango-enabled script.
 #sway_tree_output="$("${tilde}/.config/sway/custom_workspace_tree_printer/display_sway_tree_pango.sh")"
 # Now highlight the current workspace in the tree output with a bright color (magenta)
-# sway_tree_output=$(echo "$sway_tree_output" | sed -E "s/(Workspace: $workspace_name)/<span foreground=\"#d2bc44\" weight=\"bold\">[[\\1]]<\/span>/g")
-
+tree_output="$($1)"
+# Highlight current workspace transofrm
 
 # Create a horizontal rule for separation (in grey).
 hr="<span foreground=\"#cccccc\">────────────────────</span>"
@@ -97,7 +94,7 @@ message+="$date_output\n"
 message+="$hr\n"
 message+="$ncal_output\n"
 message+="$hr\n"
-message+="$($1)" # The sway tree script 
+message+="$tree_output" # The sway tree script 
 
 
 

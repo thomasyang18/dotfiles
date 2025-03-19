@@ -15,7 +15,7 @@ fi
 # Capture the Sway tree.
 tree=$(swaymsg -t get_tree)
 # Process the tree with jq to produce Pango markup.
-jq --slurpfile config "$config_file" -r '
+res=$(jq --slurpfile config "$config_file" -r '
   # Define a mapping from color names (from your config) to hex colors.
   def pango_colors: {
     "magenta": "#ff00ff",
@@ -81,4 +81,12 @@ jq --slurpfile config "$config_file" -r '
       "  " + (.name | escape_pango) + " (floating)"
     end
   )
-' <<< "$tree"
+  ' <<< "$tree")
+
+# ugh more implicit logic fineeee
+
+workspace_name="$(swaymsg -t get_workspaces | jq -r '.[] | select(.focused) | .name')"
+
+res=$(echo "$res" | sed -E "s/(Workspace: $workspace_name)/<span foreground=\"#d2bc44\" weight=\"bold\">[[\\1]]<\/span>/g")
+
+echo "$res"
