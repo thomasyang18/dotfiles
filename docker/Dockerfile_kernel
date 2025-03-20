@@ -1,0 +1,145 @@
+# This is probably why people invented dev-contianers.
+# We can already see how messy this is (separting the actual needed files from my personal configs)
+# But whatever :D
+
+
+# To build the docker image:
+# docker build --no-cache -t devenvcpp/ubuntu:0.1 .
+#
+# To create the docker container and open the terminal
+# This will create a volume for us to persist our files. We can mount this volume in other containers later if we like.
+#   The volume differs from mounting a directory from the host OS, in that docker will manage it and we won't access it from the host. 
+#   That way we don't have to worry about line endings and such.
+# docker run --name devenvcpp --user developer -it --mount type=volume,src=vol_devenvcpp,dst=/home/developer/volume devenvcpp/ubuntu:0.1 zsh 
+
+# When done, just 'exit'
+# 
+# To start the already created docker container and open the terminal
+# docker start --attach --interactive devenvcpp
+#
+# When done, just 'exit'
+
+FROM ubuntu:24.04
+SHELL ["/bin/bash", "-c"]
+MAINTAINER ChristopherPisz
+LABEL Description="Chris' Ubuntu based development environment for C++"
+
+ARG USERNAME=developer
+ARG USER_UID=1001
+ARG USER_GID=$USER_UID
+
+# Install all the things we'll need
+#    I am installing git on the container rather than the host, because we are using the volume rather than mounting a directory we share with the host
+#    in my opinion, doing the latter invites all kinds of problems.
+RUN apt update && apt -y --no-install-recommends install \
+    sudo \
+    bash \
+    vim \
+    git \
+    ssh \
+    build-essential \
+    clang \
+    cmake \
+    ninja-build \
+    gdb \
+    wget \
+    python3 
+
+RUN apt -y --no-install-recommends install \
+	python3-pip \
+	python3-venv \
+	luarocks \
+	curl \
+	zsh \
+	stow \
+	tmux
+
+RUN apt-get -y --no-install-recommends install \
+	ripgrep
+
+# nodejs needed for treesitter... or is it? I'm gonna roll without it and see whats up 
+
+# curl zsh stow here. DO NOT RUN apt commands in a .sh file I guess. because now all "~" declarations are w.r.t. the sudo user.... 
+
+
+# python3 venv is mason clangd 
+# luarocks is some lazy package idk 
+
+# Locale set to UTF-8; apparently people need this lol? 
+RUN apt install -y locales && locale-gen en_US.UTF-8
+
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8     
+
+
+
+# Add in 1e19 kernel packages needed
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libncurses-dev \
+    bison \
+    flex \
+    libssl-dev \
+    libelf-dev \
+    bc \
+    libdw-dev \
+    git \
+    clang \
+    llvm \
+    llvm-dev \
+    lld \
+    lldb \
+    binutils \
+    python3 \
+    python3-pip \
+    qtbase5-dev \
+    libgmp-dev \
+    wget \
+    curl 
+
+
+# extra post-install things needed to get this up and running 
+RUN apt install -y zstd kmod rsync
+
+
+
+
+
+# don't know if we want conan yet. Also 24.04 forbits installations like this which is lowkey kind of a banger idea even if annoying. 
+# RUN pip install conan
+
+# Create a non-root user and give them sudo
+ RUN groupadd --gid $USER_GID $USERNAME && \
+   useradd --uid $USER_UID --gid $USER_GID -m $USERNAME && \
+   echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME && \
+   chmod 0440 /etc/sudoers.d/$USERNAME
+
+# Change to the user
+USER $USERNAME
+WORKDIR /home/$USERNAME
+
+# As the user, make the directory we will map the volume to, as the user, so it has proper permissions
+RUN mkdir -p /home/$USERNAME/volume
+
+# experimental: Yes this will work while the repo is public but kinda sus man 
+# mkdir .config to prevent .config from becoming a symlink lol. dont want that!
+
+# DOTFILES 
+
+RUN git clone https://github.com/thomasyang18/dotfiles.git && \
+    mkdir .config && \
+	cd dotfiles && \
+    ./install.sh --dev 
+
+# fzf 
+WORKDIR /home/$USERNAME 
+
+RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
+
+
+
+
+
+

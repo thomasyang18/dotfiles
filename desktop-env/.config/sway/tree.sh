@@ -84,9 +84,10 @@ res=$(jq --slurpfile config "$config_file" -r '
   ' <<< "$tree")
 
 # ugh more implicit logic fineeee
+# TODO TODO TODO: Replicate this on hyprland PROPERLY, or factor, etc. 
 
 workspace_name="$(swaymsg -t get_workspaces | jq -r '.[] | select(.focused) | .name')"
 
-res=$(echo "$res" | sed -E "s/(Workspace: $workspace_name)/<span foreground=\"#d2bc44\" weight=\"bold\">[[\\1]]<\/span>/g")
+res=$(echo "$res" | sed -E "0,/(Workspace: $workspace_name)/ s/(Workspace: $workspace_name)/<span foreground=\"#d2bc44\" weight=\"bold\">[[\\1]]<\/span>/")
 
 echo "$res"
