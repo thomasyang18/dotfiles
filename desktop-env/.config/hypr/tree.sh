@@ -14,7 +14,7 @@ workspaces=$(hyprctl -j workspaces)
 clients=$(hyprctl -j clients)
 
 # Process with jq - added sorting for workspaces
-jq -r --slurpfile config "$CONFIG_FILE" -n --argjson workspaces "$workspaces" --argjson clients "$clients" '
+res=$(jq -r --slurpfile config "$CONFIG_FILE" -n --argjson workspaces "$workspaces" --argjson clients "$clients" '
 # Define color mapping
 def pango_colors: {
   "magenta": "#ff00ff",
@@ -62,7 +62,13 @@ $sorted_workspaces[] | . as $ws |
     "  <span foreground=\"" + $color + "\">" + (.title | escape_pango) + 
     (if .floating then " (floating)" else "" end) + "</span>"
   )
-'
+  ')
 
 
-#TODO: Make it display current workspace and current workspace highlighting + color. 
+# TODO: refactor to make agnostic, maybe? But you need to somehow get the current workspace name which is different across distributions... rip.... 
+
+workspace_name="$(hyprctl activeworkspace -j | jq '.id')"
+
+res=$(echo "$res" | sed -E "0,/(Workspace: $workspace_name)/ s/(Workspace: $workspace_name)/<span foreground=\"#d2bc44\" weight=\"bold\">[[\\1]]<\/span>/")
+
+echo "$res"
