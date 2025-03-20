@@ -12,7 +12,7 @@ g.transparency = config.ui.transparency
 -- TODO i dont know if this actually works lmao need to verify 
 opt.foldmethod = "indent" -- nice folding commands enabled
 -- the issue is this doesnt show a nice "z" menu like before so idk 
-
+-- okay got it to work just enable it in "which-key" plugin 
 
 opt.laststatus = 3 -- global statusline
 opt.showmode = false

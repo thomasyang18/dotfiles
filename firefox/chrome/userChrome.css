@@ -10,7 +10,10 @@
 	--toolbar-field-color: #ffffff55 !important;
 }
 
+
 /* selected tab */ 
+
+/*  TODO: Figure out remote debugging on hyprland, plus why dont firefox tabs default to white color in arch even after setting the color... rip.... */
 
 .tabbrowser-tab[selected="true"] .tab-stack .tab-background {
     background-color: #24b6ff1c !important; 
