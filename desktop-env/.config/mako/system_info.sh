@@ -24,6 +24,7 @@ brightness=$(( 100 * brightness / max_brightness ))
 # Get battery percentage
 battery=$(cat /sys/class/power_supply/BAT*/capacity 2>/dev/null || echo "N/A")
 
+
 # Get audio volume
 volume=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | head -n 1)
 
@@ -45,7 +46,7 @@ fi
 # Format output
 message=""
 message+="<span foreground=\"#87ceeb\">Brightness: </span><span foreground=\"#ffd700\">$brightness%</span>\n"
-message+="<span foreground=\"#87ceeb\">Battery: </span><span foreground=\"$battery_color\">$battery%</span>\n"
+message+="<span foreground=\"#87ceeb\">Battery: </span><span foreground=\"$battery_color\">$battery% | $(cat /sys/class/power_supply/BAT*/status)</span>\n"
 message+="<span foreground=\"#87ceeb\">Audio: </span><span foreground=\"#ffd700\">$volume</span>\n"
 message+="$wifi_output\n"
 
