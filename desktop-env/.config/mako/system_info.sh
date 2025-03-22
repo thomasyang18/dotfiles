@@ -32,6 +32,7 @@ battery=$(cat /sys/class/power_supply/BAT*/capacity 2>/dev/null || echo "N/A")
 
 # Get audio volume
 volume=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | head -n 1)
+muted=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
 
 # Get WiFi name and signal strength using nmcli (NetworkManager)
 wifi_name=$(iw dev | grep -i ssid | awk '{print $2}')
@@ -52,7 +53,16 @@ fi
 message=""
 message+="<span foreground=\"#87ceeb\">Brightness: </span><span foreground=\"#ffd700\">$brightness%</span>\n"
 message+="<span foreground=\"#87ceeb\">Battery: </span><span foreground=\"$battery_color\">$battery% | $(cat /sys/class/power_supply/BAT*/status)</span>\n"
-message+="<span foreground=\"#87ceeb\">Audio: </span><span foreground=\"#ffd700\">$volume</span>\n"
+
+
+# message+="<span foreground=\"#87ceeb\">Audio: </span><span foreground=\"#ffd700\">$volume</span>\n"
+if [[ "$muted" == "yes" ]]; then
+    message+="<span foreground=\"#87ceeb\">Audio: </span><span foreground=\"#ffd700\">$volume (Muted)</span>\n"
+else
+    message+="<span foreground=\"#87ceeb\">Audio: </span><span foreground=\"#ffd700\">$volume</span>\n"
+fi
+
+
 message+="$wifi_output\n"
 
 # Okay fastfetch was replaced do other stuff now 
