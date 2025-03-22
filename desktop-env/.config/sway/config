@@ -284,8 +284,7 @@ exec_always 'flashfocus -t 400 --flash-lone-windows never'
 
 # i am new to mako i guess
 
-# TODO this is untested but should work 
-bindsym $mod+Equal exec --no-startup-id makoctl dismiss --all
+# @WARN On ubuntu, install mako 1.10 
 
 bindsym $mod+Backspace exec --no-startup-id ~/.config/mako/system_info.sh ~/.config/sway/tree.sh 
 
