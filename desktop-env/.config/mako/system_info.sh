@@ -12,7 +12,12 @@ if [[ $# -ne 1 ]]; then
 fi
 
 # Oh my fucking god breaking mako change in 1.10 breaks my check to basically "dismiss system info if any processes are open because not jq anymore" 
-# makoctl dismiss --all
+# REQUIRES: Mako 1.10
+
+if [[ -n "$(makoctl list)" ]]; then
+  makoctl dismiss --all
+  exit 0
+fi
 
 tilde=~
 
