@@ -279,14 +279,16 @@ default_border none
 # seat seat0 xcursor_theme Junko 64
 
 # flash focus
+# warning: this bricks on sway 1.10 for now... latest version of sway works but argahhajskdfh 
+# maybe we just switch fully to hyprland lmao 
 
 exec_always 'flashfocus -t 400 --flash-lone-windows never'
 
-# i am new to mako i guess
 
-# @WARN On ubuntu, install mako 1.10 
 
-bindsym $mod+Backspace exec --no-startup-id ~/.config/mako/system_info.sh ~/.config/sway/tree.sh 
+exec_always dunst 
+
+bindsym $mod+Backspace exec --no-startup-id ~/.config/dunst/system_info.sh ~/.config/sway/tree.sh 
 
 
 # Inhibit fullscreen hack hopefully

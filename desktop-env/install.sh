@@ -11,6 +11,9 @@ rm -rf ~/.config/wofi
 rm -rf ~/.config/alacritty
 rm -rf ~/.config/mako
 rm -rf ~/.config/hypr
+rm -rf ~/.config/dunst
+
+#------------------------------------
 
 rm -rf ~/.config/btop
 mkdir -p ~/.config/btop # btop generates a themes folder. We don't want to own the folder. For the other ones, we actually do (sway) or we're lazy (alacritty). 
