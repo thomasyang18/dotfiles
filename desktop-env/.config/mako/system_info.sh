@@ -57,7 +57,7 @@ message+="<span foreground=\"#87ceeb\">Battery: </span><span foreground=\"$batte
 
 # message+="<span foreground=\"#87ceeb\">Audio: </span><span foreground=\"#ffd700\">$volume</span>\n"
 if [[ "$muted" == "yes" ]]; then
-    message+="<span foreground=\"#87ceeb\">Audio: </span><span foreground=\"#ffd700\">$volume (Muted)</span>\n"
+	message+="<span foreground=\"#87ceeb\">Audio: </span><span foreground=\"#ffd700\">$volume</span><span foreground=\"#ff4500\" weight=\"bold\"> (Muted)</span>\n"
 else
     message+="<span foreground=\"#87ceeb\">Audio: </span><span foreground=\"#ffd700\">$volume</span>\n"
 fi
