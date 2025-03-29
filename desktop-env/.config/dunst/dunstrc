@@ -1,34 +1,31 @@
 [global]
     # Font
-    font = JetBrains Mono Nerd Font 14
+    font = JetBrains Mono Nerd Font 14 
 
     # Enable Pango markup
     markup = full
 
     # Window geometry
-    width = 650
+    width = 1000
     height = 1200
-    offset = 10  # Margin (horizontal and vertical spacing from anchor)
     padding = 20
-    horizontal_padding = 20  # Dunst separates padding into horizontal and vertical
+    horizontal_padding = 20  # Consistent padding inside the notification
 
     # Background color with transparency
-    frame_color = "#000000cc"  # Dunst uses "frame_color" for the background of the notification
-    background = "#000000cc"   # Optional: Match background to frame for consistency
+    frame_color = "#000000cc"  # Background of the notification
+    background = "#000000cc"   # Match background to frame
 
     # Border settings
-    frame_width = 0            # Border size (0 to disable)
-    corner_radius = 10         # Border radius
+    frame_width = 0            # No border
+    corner_radius = 10         # Rounded corners
 
-    # Position/anchor (bottom-left)
-    origin = bottom-left
-    # Offset is used for margin-like spacing from the anchor point
-    # If you need more precise control, adjust offset (e.g., "10x10" for x=10, y=10)
+    # Position/anchor (center of the screen)
+    origin = center
+    offset = 0                 # No offset/margin from the center
 
 [urgency_low]
-    # Inherit global settings unless overridden
     background = "#000000cc"
-    foreground = "#ffffff"     # Default text color (adjust as needed)
+    foreground = "#ffffff"     # White text
 
 [urgency_normal]
     background = "#000000cc"
